@@ -86,7 +86,8 @@ def getHeader(msg):
 	elif (msgType == '_nav_msgs__Odometry'):
 		headerRow = ["Time", "Header_sequence", "Header_secs", "Header_nsecs", \
 					"Position_x", "Position_y", "Position_z", \
-					"Orientation_x", "Orientation_y", "Orientation_z", "Orientation_w"]
+					"Orientation_x", "Orientation_y", "Orientation_z", "Orientation_w", \
+					"linear_x","linear_y","linear_z","angular_x","angular_y","angular_z"]
 
 	elif (msgType == '_geometry_msgs__PoseWithCovarianceStamped'):
 		headerRow = ["Time", "Header_sequence", "Header_secs", "Header_nsecs", \
@@ -149,7 +150,9 @@ def getColumns(t, msg, imageFile = ""):
 	elif (msgType == '_nav_msgs__Odometry'):
 		columns = [t, msg.header.seq, msg.header.stamp.secs, msg.header.stamp.nsecs, \
 					msg.pose.pose.position.x, msg.pose.pose.position.y, msg.pose.pose.position.z, \
-					msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w ]
+					msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w, \
+					msg.twist.twist.linear.x, msg.twist.twist.linear.y, msg.twist.twist.linear.z, \
+					msg.twist.twist.angular.x, msg.twist.twist.angular.y, msg.twist.twist.angular.z ]
 
 	elif (msgType == '_geometry_msgs__PoseWithCovarianceStamped'):
 		columns = [t, msg.header.seq, msg.header.stamp.secs, msg.header.stamp.nsecs, \
